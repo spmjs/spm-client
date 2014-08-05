@@ -42,6 +42,13 @@ Global configuration
 - auth
 - temp
 
+### login
+
+login spmjs.io
+
+- username
+- authKey
+
 ### install
 
 Install modules, arguments
