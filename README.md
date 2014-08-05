@@ -36,7 +36,7 @@ client.install({name: 'seajs'}, {registry: 'http://proxy.spmjs.io'}, function(er
 
 ### config
 
-配置全局参数
+Global configuration
 
 - registry
 - auth
@@ -44,7 +44,7 @@ client.install({name: 'seajs'}, {registry: 'http://proxy.spmjs.io'}, function(er
 
 ### install
 
-安装模块，参数
+Install modules, arguments
 
 - name
 - cwd
@@ -55,26 +55,26 @@ client.install({name: 'seajs'}, {registry: 'http://proxy.spmjs.io'}, function(er
 
 ### search
 
-查询模块，参数
+Search modules, arguments
 
 - name
 
 ### info
 
-查询模块信息，参数
+Get module info, arguments
 
 - name
 
 ### publish
 
-发布模块，参数
+Publish module, arguments
 
 - cwd
 - tag
 
 ### unpublish
 
-删除模块，参数
+Unpublish modules, arguments
 
 - name
 
