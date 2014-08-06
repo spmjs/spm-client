@@ -4,20 +4,31 @@
   "description": "spm client api",
   "main": "index",
   "dependencies": {
+    "async": "~0.9.0",
+    "colorful": "~2.1.0",
     "debug": "~1.0.4",
     "extend": "~1.3.0",
     "fstream": "~1.0.1",
     "fstream-ignore": "~1.0.1",
+    "gulp": "~3.8.7",
+    "gulp-gunzip": "~0.0.2",
+    "gulp-untar2": "~0.0.5",
     "inherits": "~2.0.1",
+    "lodash": "~2.4.1",
+    "mkdirp": "~0.5.0",
+    "multipipe": "~0.1.1",
     "request": "~2.39.0",
     "semver": "~3.0.1",
-    "tar": "~1.0.0"
+    "spm-log": "~0.1.0",
+    "spmrc": "~1.1.0",
+    "tar": "~1.0.0",
+    "vinyl-source-stream": "~0.1.1"
   },
   "devDependencies": {
     "coveralls": "2",
     "istanbul": "0",
     "mocha": "1",
-    "should": "4"
+    "should": "~4.0.4"
   },
   "repository": {
     "type": "git",
