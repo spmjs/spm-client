@@ -24,6 +24,7 @@
     "tar": "~1.0.0"
   },
   "devDependencies": {
+    "sinon": "*",
     "co-mocha": "*",
     "coveralls": "~2.8.0",
     "istanbul-harmony": "*",
