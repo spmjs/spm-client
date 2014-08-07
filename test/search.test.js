@@ -11,7 +11,7 @@ var config = {
   auth: '12345'
 };
 
-describe.only('/lib/search.js', function() {
+describe('/lib/search.js', function() {
 
   afterEach(mock.restore.bind(mock));
 
