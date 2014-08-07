@@ -2,7 +2,10 @@
 
 var cache = {};
 
-exports.require = function(module) {
+module.exports = Mock;
+module.exports.require = mockRequire;
+
+function mockRequire(module) {
   var path = require.resolve(module);
   if (path in cache) {
     return cache[path];
@@ -15,13 +18,19 @@ exports.require = function(module) {
   var mock = new Mock(pkg);
   cache[path] = mock;
   return mock;
-};
+}
 
-function Mock(pkg) {
+function Mock(obj, prop) {
+  if (!(this instanceof Mock)) {
+    return new Mock(obj, prop);
+  }
+
   var that = this;
-  var orig = pkg.exports;
+  this.obj = obj;
+  this.prop = prop;
+  var orig = this.orig = obj[prop];
   this.restore();
-  pkg['exports'] = function() {
+  obj[prop] = function() {
     var ret, err, args = [].slice.call(arguments);
     try {
       if (that._intercept) {
@@ -58,6 +67,10 @@ Mock.prototype.restore = function() {
   this._intercept = null;
   this.callCount = 0;
   this.callCache = [];
+};
+
+Mock.prototype.destroy = function() {
+  this.obj[this.prop] = this.orig;
 };
 
 function isGeneratorFn(fn) {
