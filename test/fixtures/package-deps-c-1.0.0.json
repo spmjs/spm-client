@@ -1,0 +1,16 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "spm": {
+    "main": "index.js",
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "dependencies": [],
+  "tag": "stable",
+  "publisher": "sorrycc",
+  "filename": "c-1.0.0.tar.gz",
+  "created_at": "2014-05-15T09:25:26+00:00",
+  "updated_at": "2014-05-15T09:41:35+00:00"
+}

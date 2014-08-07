@@ -11,7 +11,8 @@ function mockRequire(module) {
     return cache[path];
   }
   if (path in require.cache) {
-    throw new Error('should require ' + module + ' first');
+    console.warn('should require ' + module + ' first');
+    delete require.cache[path];
   }
   require(module);
   var pkg = require.cache[path];
