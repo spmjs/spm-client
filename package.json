@@ -28,7 +28,7 @@
     "coveralls": "~2.8.0",
     "istanbul-harmony": "*",
     "mocha": "1",
-    "regenerator": "*",
+    "ali.regenerator": "*",
     "should": "~4.0.4"
   },
   "repository": {
