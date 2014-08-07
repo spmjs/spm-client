@@ -15,7 +15,7 @@ function mockRequire(module) {
   }
   require(module);
   var pkg = require.cache[path];
-  var mock = new Mock(pkg);
+  var mock = new Mock(pkg, 'exports');
   cache[path] = mock;
   return mock;
 }

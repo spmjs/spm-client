@@ -3,7 +3,7 @@
 require('should');
 var config = require('../lib/config');
 
-describe.only('/lib/config.js', function() {
+describe('/lib/config.js', function() {
 
   afterEach(config.reset);
 

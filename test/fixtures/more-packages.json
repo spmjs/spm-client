@@ -28,17 +28,8 @@
       },
       "licenses": "MIT",
       "spm": {
-        "main": "index.js",
-        "dependencies": {
-          "position": "1.0.0"
-        },
-        "devDependencies": {
-          "expect.js": "0.3.1"
-        }
+        "main": "index.js"
       },
-      "dependencies": [
-        "position@1.0.0"
-      ],
       "tag": "stable",
       "publisher": "popomore",
       "md5": "93aca4d8ae0672525bf174f8835a787b",
@@ -62,17 +53,8 @@
       },
       "licenses": "MIT",
       "spm": {
-        "main": "index.js",
-        "dependencies": {
-          "position": "1.0.0"
-        },
-        "devDependencies": {
-          "expect.js": "0.3.1"
-        }
+        "main": "index.js"
       },
-      "dependencies": [
-        "position@1.0.0"
-      ],
       "tag": "stable",
       "publisher": "popomore",
       "md5": "12492b87d663abd5b656797996a5d9f0",

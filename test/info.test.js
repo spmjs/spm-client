@@ -115,7 +115,7 @@ describe('/lib/info.js', function() {
       err = e;
     }
     should.exist(err);
-    err.message.should.eql('not found tmp ~ noexisttag');
+    err.message.should.eql('no matched package tmp ~ noexisttag');
   });
 
   it('should get the lastest version', function* () {

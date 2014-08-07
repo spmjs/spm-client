@@ -30,7 +30,8 @@
     "istanbul-harmony": "*",
     "mocha": "1",
     "ali.regenerator": "*",
-    "should": "~4.0.4"
+    "should": "~4.0.4",
+    "rimraf": "*"
   },
   "repository": {
     "type": "git",
