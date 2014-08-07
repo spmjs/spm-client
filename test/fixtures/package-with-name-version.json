@@ -1,0 +1,36 @@
+{
+  "name": "arale-cookie",
+  "version": "1.1.0",
+  "description": "提供 Cookie 操作方法。",
+  "keywords": [
+    "utility"
+  ],
+  "author": "玉伯 <lifesinger@gmail.com>",
+  "maintainers": [
+    "玉伯 <lifesinger@gmail.com>",
+    "偏右 <afc163@gmail.com>"
+  ],
+  "homepage": "http://aralejs.org/cookie/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aralejs/cookie"
+  },
+  "bugs": {
+    "url": "https://github.com/aralejs/cookie/issues"
+  },
+  "spm": {
+    "main": "index.js",
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "dependencies": [],
+  "readme": "\n# Cookie\n\n---\n\n[![Build Status](https://secure.travis-ci.org/aralejs/cookie.png)](https://travis-ci.org/aralejs/cookie)\n[![Coverage Status](https://coveralls.io/repos/aralejs/cookie/badge.png?branch=master)](https://coveralls.io/r/aralejs/cookie)\n\n\n提供 Cookie 操作方法。\n\n---\n\n## 使用说明\n\n\n### get *Cookie.get(name, [options])*\n\n获取 cookie 值。`options` 参数可选，取值如下：\n\n1. `converter` 转换函数。如果所获取的 cookie 有值，会在返回前传给 `converter`\n函数进行转换。\n1. 选项对象。对象中可以有两个属性：`converter` 和 `raw`. `raw` 是布尔值，为真时，不会对获取到的\ncookie 值进行 URI 解码。\n\n**注**：如果要获取的 cookie 键值不存在，则返回 `undefined`.\n\n例子：\n\n```js\ndefine(function() {\n    var Cookie = require('cookie');\n\n    // setup\n    document.cookie = 'foo=1';\n    document.cookie = 'bar=2';\n\n    Cookie.get('foo');\n    // returns '1'\n\n    Cookie.get('bar', function(s) { return parseInt(s); } );\n    // returns 2\n});\n```\n\n\n### set *Cookie.set(name, value, [options])*\n\n设置 cookie 值。参数 `options` 可选，可以有以下属性：`path`（字符串）、`domain`（字符串）、\n`expires`（数值或日期对象）、`raw`（布尔值）。当 `raw` 为真值时，在设置 cookie 值时，不会进行\nURI 编码。\n\n例子：\n\n```js\ndefine(function() {\n    var Cookie = require('cookie');\n\n    Cookie.set('foo', 3);\n\n    Cookie.set('bar', 4, {\n        domain: 'example.com',\n        path: '/',\n        expires: 30\n    });\n});\n````\n\n\n### remove *Cookie.remove(name, [options])*\n\n移除指定的 cookie.\n\n例子：\n\n```js\ndefine(function() {\n    var Cookie = require('cookie');\n\n    Cookie.remove('foo');\n\n    Cookie.remove('bar', {\n        domain: 'example.com',\n        path: '/'\n    });\n});\n````\n\n\n\n[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aralejs/cookie/trend.png)](https://bitdeli.com/free \"Bitdeli Badge\")\n\n",
+  "tag": "stable",
+  "revision": "0966c910e3bac111cfbfa94055ff7e88e18e3dc7",
+  "publisher": "sorrycc",
+  "md5": "71e45cb9b1d6107a1e333f1769f2a868",
+  "filename": "arale-cookie-1.1.0.tar.gz",
+  "created_at": "2014-05-15T09:25:26+00:00",
+  "updated_at": "2014-05-15T09:41:35+00:00"
+}

@@ -1,20 +1,27 @@
 'use strict';
 
+var cache = {};
+
 exports.require = function(module) {
   var path = require.resolve(module);
+  if (path in cache) {
+    return cache[path];
+  }
   if (path in require.cache) {
-    throw new Error('should require before ' + module);
+    throw new Error('should require ' + module + ' first');
   }
   require(module);
-  var cache = require.cache[path];
-  return new Mock(cache);
+  var pkg = require.cache[path];
+  var mock = new Mock(pkg);
+  cache[path] = mock;
+  return mock;
 };
 
-function Mock(cache) {
+function Mock(pkg) {
   var that = this;
-  var orig = cache.exports;
+  var orig = pkg.exports;
   this.restore();
-  cache.exports = function() {
+  pkg['exports'] = function() {
     var ret, err, args = [].slice.call(arguments);
     try {
       if (that._intercept) {
@@ -37,7 +44,7 @@ function Mock(cache) {
 }
 
 Mock.prototype.intercept = function(func) {
-  if (typeof func === 'function') {
+  if (typeof func === 'function' || isGeneratorFn(func)) {
     this._intercept = func;
   }
 };
@@ -52,3 +59,8 @@ Mock.prototype.restore = function() {
   this.callCount = 0;
   this.callCache = [];
 };
+
+function isGeneratorFn(fn) {
+  return typeof fn === 'function' &&
+    fn.constructor.name === 'GeneratorFunction';
+}

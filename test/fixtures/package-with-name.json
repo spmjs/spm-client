@@ -1,0 +1,60 @@
+{
+  "name": "arale-cookie",
+  "description": "提供 Cookie 操作方法。",
+  "keywords": [
+    "utility"
+  ],
+  "author": "玉伯 <lifesinger@gmail.com>",
+  "maintainers": [
+    "玉伯 <lifesinger@gmail.com>",
+    "偏右 <afc163@gmail.com>"
+  ],
+  "homepage": "http://aralejs.org/cookie/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aralejs/cookie"
+  },
+  "owners": [
+    "sorrycc"
+  ],
+  "packages": {
+    "1.1.0": {
+      "name": "arale-cookie",
+      "version": "1.1.0",
+      "description": "提供 Cookie 操作方法。",
+      "keywords": [
+        "utility"
+      ],
+      "author": "玉伯 <lifesinger@gmail.com>",
+      "maintainers": [
+        "玉伯 <lifesinger@gmail.com>",
+        "偏右 <afc163@gmail.com>"
+      ],
+      "homepage": "http://aralejs.org/cookie/",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aralejs/cookie"
+      },
+      "bugs": {
+        "url": "https://github.com/aralejs/cookie/issues"
+      },
+      "spm": {
+        "main": "index.js",
+        "devDependencies": {
+          "expect.js": "0.3.1"
+        }
+      },
+      "dependencies": [],
+      "tag": "stable",
+      "revision": "0966c910e3bac111cfbfa94055ff7e88e18e3dc7",
+      "publisher": "sorrycc",
+      "md5": "71e45cb9b1d6107a1e333f1769f2a868",
+      "filename": "arale-cookie-1.1.0.tar.gz",
+      "created_at": "2014-05-15T09:25:26+00:00",
+      "updated_at": "2014-05-15T09:41:35+00:00"
+    }
+  },
+  "version": "1.1.0",
+  "created_at": "2014-05-15T09:41:35+00:00",
+  "updated_at": "2014-05-15T09:41:35+00:00"
+}

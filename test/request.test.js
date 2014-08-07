@@ -4,7 +4,7 @@ var should = require('should');
 var mock = require('./support/mock').require('co-request');
 var request = require('../lib/request');
 
-describe.only('/lib/request.js', function() {
+describe('/lib/request.js', function() {
 
   afterEach(mock.restore.bind(mock));
 
