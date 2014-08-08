@@ -1,4 +1,9 @@
-# spm-client [![Build Status](https://travis-ci.org/spmjs/spm-client.png?branch=master)](https://travis-ci.org/spmjs/spm-client) [![Coverage Status](https://coveralls.io/repos/spmjs/spm-client/badge.png?branch=master)](https://coveralls.io/r/spmjs/spm-client?branch=master) 
+# spm-client 
+
+[![NPM version](https://img.shields.io/npm/v/spm-client.svg?style=flat)](https://npmjs.org/package/spm-client)
+[![Build Status](https://img.shields.io/travis/spmjs/spm-client.svg?style=flat)](https://travis-ci.org/spmjs/spm-client)
+[![Build Status](https://img.shields.io/coveralls/spmjs/spm-client.svg?style=flat)](https://coveralls.io/r/spmjs/spm-client)
+[![NPM downloads](http://img.shields.io/npm/dm/spm-client.svg?style=flat)](https://npmjs.org/package/spm-client)
 
 spm client api
 
@@ -18,7 +23,7 @@ var client = require('spm-client');
 // global configuration
 client.config({
   registry: 'http://registry.spmjs.io',
-  auth: ''
+  auth: '12345'
 })
 
 // install seajs
@@ -27,7 +32,7 @@ client.install({name: 'seajs'}, function(err) {
 });
 
 // overwrite global config
-client.install({name: 'seajs'}, {registry: 'http://proxy.spmjs.io'}, function(err) {
+client.install({name: 'seajs'}, {registry: 'http://your-registry'}, function(err) {
   console.log(err);
 });
 ```
@@ -38,52 +43,56 @@ client.install({name: 'seajs'}, {registry: 'http://proxy.spmjs.io'}, function(er
 
 Global configuration
 
-- registry
-- auth
-- temp
+* registry: registry url of yuan server
+* global_registry: global registry, others are private
+* proxy: an HTTP proxy, pass to request
+* auth:  the authKey that copied from spmjs accout page
+* temp: the temp directory
 
 ### login
 
-login spmjs.io
+Login spmjs.io, arguments below
 
-- username
-- authKey
+* username: the username of registry
+* authkey: the authKey that copied from spmjs accout page
 
 ### install
 
-Install modules, arguments
+Install a package, arguments below
 
-- name
-- cwd
-- dest
-- force
-- save
-- saveDev
+* name: the package name, can also be name@version
+* destination: the directory that install to
+* force: force download packages from registry, no cache
+* save: save name to package.dependencies
+* saveDev: save name to package.devDependencies
 
 ### search
 
-Search modules, arguments
+Search a package, arguments below
 
-- name
+* name: search packages with your query name
 
 ### info
 
-Get module info, arguments
+Get package info, arguments below
 
-- name
+* name: the package name
+* version: the package version
 
 ### publish
 
-Publish module, arguments
+Publish a package, arguments below
 
-- cwd
-- tag
+* cwd: where is your package
+* tag: publish with a given tag that you can install by name@tag, default is stable
+* force: force publish when the package exists
 
 ### unpublish
 
-Unpublish modules, arguments
+Unpublish a package, arguments below
 
-- name
+* name: the package name
+* version: the package version
 
 ## LISENCE
 

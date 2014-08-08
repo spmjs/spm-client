@@ -1,0 +1,97 @@
+{
+  "data": {
+    "total": 10,
+    "results": [
+      {
+        "name": "arale-graphic",
+        "description": "",
+        "keywords": [],
+        "homepage": "https://github.com/fangk/arale-graphic",
+        "repository": "git://github.com/fangk/arale-graphic.git"
+      },
+      {
+        "name": "arale-dnd",
+        "description": "drag and drop",
+        "keywords": [
+          "utility"
+        ],
+        "homepage": "https://github.com/aralejs/dnd",
+        "repository": "https://github.com/aralejs/dnd.git"
+      },
+      {
+        "name": "arale-calendar",
+        "description": "Calendar widget.",
+        "keywords": [
+          "widget",
+          "month",
+          "datepicker"
+        ],
+        "homepage": "http://aralejs.org/calendar/",
+        "repository": "https://github.com/aralejs/calendar.git"
+      },
+      {
+        "name": "arale-autocomplete",
+        "description": "自动补全组件",
+        "keywords": [
+          "widget"
+        ],
+        "homepage": "http://aralejs.org/autocomplete/",
+        "repository": "https://github.com/aralejs/autocomplete.git"
+      },
+      {
+        "name": "arale-cookie",
+        "description": "提供 Cookie 操作方法。",
+        "keywords": [
+          "utility"
+        ],
+        "homepage": "http://aralejs.org/cookie/",
+        "repository": "https://github.com/aralejs/cookie"
+      },
+      {
+        "name": "arale-select",
+        "description": "模拟 select 的组件",
+        "keywords": [
+          "widget"
+        ],
+        "homepage": "http://aralejs.org/select",
+        "repository": "https://github.com/aralejs/select.git"
+      },
+      {
+        "name": "anima-validator",
+        "description": "validator from arale with yocto(zepto) replacing jquery",
+        "keywords": [],
+        "homepage": "http://gitlab.alibaba-inc.com/animajs/validator",
+        "repository": "http://gitlab.alibaba-inc.com/animajs/validator.git"
+      },
+      {
+        "name": "arale-qrcode",
+        "description": "二维码绘制模块",
+        "keywords": [
+          "utility",
+          "qrcode",
+          "二维码"
+        ],
+        "homepage": "http://aralejs.org/qrcode/",
+        "repository": "https://github.com/aralejs/qrcode/"
+      },
+      {
+        "name": "arale-class",
+        "description": "提供简洁的 OO 实现。",
+        "keywords": [
+          "infrastructure"
+        ],
+        "homepage": "http://aralejs.org/class/",
+        "repository": "https://github.com/aralejs/class.git"
+      },
+      {
+        "name": "arale-popup",
+        "description": "Popup 是可触发的浮层组件。",
+        "keywords": [
+          "widget"
+        ],
+        "homepage": "http://aralejs.org/popup/",
+        "repository": "https://github.com/aralejs/popup.git"
+      }
+    ]
+  }
+}

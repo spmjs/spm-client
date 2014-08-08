@@ -1,0 +1,20 @@
+{
+  "name": "tmp",
+  "version": "1.0.0",
+  "spm": {
+    "dependencies": {
+      "position": "1.1.0"
+    },
+    "main": "index.js"
+  },
+  "tag": "stable",
+  "readme": "",
+  "dependencies": [
+    "position@1.1.0"
+  ],
+  "publisher": "popomore",
+  "md5": "d99e2eb49acd5f201e50e349c444717a",
+  "filename": "tmp-1.0.0.tar.gz",
+  "created_at": "2014-08-07T18:57:42+00:00",
+  "updated_at": "2014-08-07T18:57:42+00:00"
+}

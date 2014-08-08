@@ -1,0 +1,16 @@
+{
+  "name": "tmp",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/popomore/tmp.git"
+  },
+  "owners": [
+    "popomore"
+  ],
+  "created_at": "2014-08-06T08:44:42+00:00",
+  "updated_at": "2014-08-06T08:44:42+00:00"
+}
