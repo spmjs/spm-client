@@ -31,7 +31,7 @@ describe('/lib/info.js', function() {
     mock.callCount.should.eql(1);
     var args = mock.callCache[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/arale-cookie/');
-    Object.keys(args).should.eql(['url', 'method', 'json', 'headers', 'encoding']);
+    args.should.have.property('json');
     res.should.eql(obj.packages['1.1.0']);
   });
 
@@ -51,7 +51,7 @@ describe('/lib/info.js', function() {
     mock.callCount.should.eql(1);
     var args = mock.callCache[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/arale-cookie/');
-    Object.keys(args).should.eql(['url', 'method', 'json', 'headers', 'encoding']);
+    args.should.have.property('json');
     res.should.eql(obj.packages['1.1.0']);
   });
 

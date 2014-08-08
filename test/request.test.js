@@ -22,7 +22,7 @@ describe('/lib/request.js', function() {
       args.url.should.eql('http://spmjs.io/repository/arale-cookie/');
       args.method.should.eql('GET');
       Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language']);
-      Object.keys(args).should.eql(['url', 'method', 'headers']);
+      Object.keys(args).should.eql(['url', 'method', 'headers', 'gzip']);
     });
 
     it('should has header `Authorization`', function* () {
@@ -35,7 +35,7 @@ describe('/lib/request.js', function() {
       var args = mock.callCache[0].arguments[0];
       args.headers['Authorization'].should.eql('Yuan 12345');
       Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language', 'Authorization']);
-      Object.keys(args).should.eql(['url', 'method', 'headers']);
+      Object.keys(args).should.eql(['url', 'method', 'headers', 'gzip']);
     });
 
     it('should has header `X-Yuan-Force`', function* () {
@@ -48,27 +48,11 @@ describe('/lib/request.js', function() {
       var args = mock.callCache[0].arguments[0];
       args.headers['X-Yuan-Force'].should.eql('true');
       Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language', 'X-Yuan-Force']);
-      Object.keys(args).should.eql(['url', 'method', 'force', 'headers']);
-    });
-
-    it('should has gzip', function* () {
-      yield* request({
-        url: 'http://spmjs.io/repository/arale-cookie/',
-        method: 'GET',
-        json: {
-          name: 'arale-cookie',
-          version: '1.1.0'
-        }
-      });
-      mock.callCount.should.eql(1);
-      var args = mock.callCache[0].arguments[0];
-      args.headers['accept-encoding'].should.eql('gzip');
-      Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language', 'accept-encoding']);
-      Object.keys(args).should.eql(['url', 'method', 'json', 'headers', 'encoding']);
+      Object.keys(args).should.eql(['url', 'method', 'force', 'headers', 'gzip']);
     });
   });
 
-  it('should throw when request error', function* () {
+  it('should throw when request ECONNREFUSED', function* () {
     mock.intercept(function() {
       var err = new Error('connect refused');
       err.code = 'ECONNREFUSED';
@@ -87,6 +71,27 @@ describe('/lib/request.js', function() {
     mock.callCount.should.eql(1);
     should.exist(err);
     err.code.should.eql('ECONNREFUSED');
+  });
+
+  it('should throw when request ENOTFOUND', function* () {
+    mock.intercept(function() {
+      var err = new Error('connect refused');
+      err.code = 'ENOTFOUND';
+      throw err;
+    });
+
+    var err;
+    try {
+      yield* request({
+        url: 'http://spmjs.io/repository/arale-cookie/',
+        method: 'GET'
+      });
+    } catch(e) {
+      err = e;
+    }
+    mock.callCount.should.eql(1);
+    should.exist(err);
+    err.code.should.eql('ENOTFOUND');
   });
 });
 

@@ -31,7 +31,7 @@ describe('/lib/search.js', function() {
     mock.callCount.should.eql(1);
     var args = mock.callCache[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/search?q=arale');
-    Object.keys(args).should.eql(['url', 'method', 'json', 'headers', 'encoding']);
+    args.should.have.property('json');
     res.should.eql(obj);
   });
 });

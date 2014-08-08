@@ -36,7 +36,7 @@ describe('/lib/login.js', function() {
       account: 'arale',
       authkey: '12345'
     });
-    Object.keys(args).should.eql(['url', 'method', 'json', 'headers', 'encoding']);
+    args.should.have.property('json');
     res.should.eql(obj);
   });
 
