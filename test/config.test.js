@@ -9,7 +9,7 @@ describe('/lib/config.js', function() {
 
   it('should get default', function() {
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'proxy', 'auth', 'temp']);
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
     (ret.registry === undefined).should.be.true;
     (ret.proxy === undefined).should.be.true;
     (ret.auth === undefined).should.be.true;
@@ -22,7 +22,7 @@ describe('/lib/config.js', function() {
       proxy: null
     });
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'proxy', 'auth', 'temp']);
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
     ret.registry.should.equal('http://spmjs.io');
     ret.auth.should.equal('');
     (ret.proxy === undefined).should.be.true;
@@ -31,7 +31,7 @@ describe('/lib/config.js', function() {
   it('should not write unmatched key', function() {
     config({a: 1});
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'proxy', 'auth', 'temp']);
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
   });
 
   it('should reset defaults', function() {

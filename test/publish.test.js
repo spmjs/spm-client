@@ -97,4 +97,15 @@ describe('/lib/publish.js', function() {
     }
     err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\.]*$/i');
   });
+
+  it('should throw when publish private package', function*() {
+    var err, cwd;
+    try {
+      cwd = join(fixtures, 'publish-private');
+      yield* publish({cwd: cwd}, {registry: 'http://spmjs.io'});
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('it\'s private package, can\'t publish to http://spmjs.io');
+  });
 });
