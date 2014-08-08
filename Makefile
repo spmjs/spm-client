@@ -6,7 +6,7 @@ build: clean
 	@$(MAKE) $(BUILD)
 
 build/%.js: lib/%.js
-	@node_modules/.bin/regenerator --include-runtime $< > $@
+	node_modules/.bin/regenerator --include-runtime $< > $@
 
 clean:
 	@rm -rf build
