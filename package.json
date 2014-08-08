@@ -24,14 +24,13 @@
     "tar": "~1.0.0"
   },
   "devDependencies": {
-    "sinon": "*",
-    "co-mocha": "*",
-    "coveralls": "~2.8.0",
-    "istanbul-harmony": "*",
+    "co-mocha": "0",
+    "coveralls": "2",
+    "istanbul-harmony": "0",
     "mocha": "1",
-    "ali.regenerator": "*",
-    "should": "~4.0.4",
-    "rimraf": "*"
+    "ali.regenerator": "0",
+    "should": "4",
+    "rimraf": "2"
   },
   "repository": {
     "type": "git",
