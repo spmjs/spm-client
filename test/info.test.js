@@ -155,4 +155,41 @@ describe('/lib/info.js', function() {
     args.url.should.eql('http://spmjs.io/repository/tmp/');
     res.should.eql(obj.packages['0.0.2']);
   });
+
+  it('should throw when statusCode>=500', function* () {
+    mock.intercept(function* () {
+      /* jshint noyield: true */
+      return {
+        headers: {},
+        statusCode: 500
+      };
+    });
+    var err;
+    try {
+      yield* info({name: 'tmp'}, config);
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('Server error');
+  });
+
+  it('should throw when statusCode>=401', function* () {
+    mock.intercept(function* () {
+      /* jshint noyield: true */
+      return {
+        headers: {},
+        statusCode: 401,
+        body: {
+          message: 'Authorization required.'
+        }
+      };
+    });
+    var err;
+    try {
+      yield* info({name: 'tmp'}, config);
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('Authorization required.');
+  });
 });
