@@ -1,12 +1,15 @@
 SRC=$(wildcard lib/*.js)
 BUILD = $(subst lib/,build/,$(SRC))
 
+build/%.js: lib/%.js
+	node_modules/.bin/regenerator --include-runtime $< > $@
+
 build: clean
 	@mkdir -p build
 	@$(MAKE) $(BUILD)
 
-build/%.js: lib/%.js
-	node_modules/.bin/regenerator --include-runtime $< > $@
+publish: build
+	@npm publish
 
 clean:
 	@rm -rf build
