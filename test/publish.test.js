@@ -63,12 +63,20 @@ describe('/lib/publish.js', function() {
   it('should throw when package is invalid', function*() {
     var err, cwd;
     try {
+      cwd = join(fixtures, 'publish-miss-package');
+      yield* publish({cwd: cwd});
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('package.json not found');
+
+    try {
       cwd = join(fixtures, 'publish-miss-name');
       yield* publish({cwd: cwd});
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('name is missing');
+    err.message.should.eql('name key is missing');
 
     try {
       err = undefined;
@@ -77,7 +85,7 @@ describe('/lib/publish.js', function() {
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('version is missing');
+    err.message.should.eql('version key is missing');
 
     try {
       err = undefined;
@@ -96,6 +104,15 @@ describe('/lib/publish.js', function() {
       err = e;
     }
     err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\.]*$/i');
+
+    try {
+      err = undefined;
+      cwd = join(fixtures, 'publish-miss-spm');
+      yield* publish({cwd: cwd});
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('spm key is missing');
   });
 
   it('should throw when publish private package', function*() {
