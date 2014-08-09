@@ -33,7 +33,7 @@ describe('/lib/install.js', function() {
       m.callCount.should.eql(1);
       var args = m.callCache[0].arguments;
       args[0].should.eql('a');
-      args[1].base.should.eql(process.cwd());
+      args[1].cwd.should.eql(process.cwd());
       args[1].destination.should.eql(join(process.cwd(), 'spm_modules'));
       //args[1].cache.should.eql('~/.spm/cache');
       args[1].save.should.be.true;
@@ -49,7 +49,7 @@ describe('/lib/install.js', function() {
       m.callCount.should.eql(1);
       var args = m.callCache[0].arguments;
       args[0].should.eql('a@1.0.0');
-      args[1].base.should.eql(process.cwd());
+      args[1].cwd.should.eql(process.cwd());
       args[1].destination.should.eql(join(process.cwd(), 'spm_modules'));
       //args[1].cache.should.eql('~/.spm/cache');
       args[1].save.should.be.true;
@@ -59,7 +59,7 @@ describe('/lib/install.js', function() {
 
     it('should install dependencies', function* () {
       yield* install({
-        base: join(fixtures, 'install-package'),
+        cwd: join(fixtures, 'install-package'),
         save: true,
         saveDev: true
       });
@@ -72,7 +72,7 @@ describe('/lib/install.js', function() {
 
     it('should not install package when no dependencies', function* () {
       yield* install({
-        base: join(fixtures, 'install-no-deps')
+        cwd: join(fixtures, 'install-no-deps')
       });
       m.callCount.should.eql(0);
     });
@@ -258,7 +258,7 @@ describe('/lib/install.js', function() {
       fs.writeFileSync(pkgPath, '{"name": "a", "version": "1.0.0"}');
       var args = {
         name: 'tmp',
-        base: tmpDir,
+        cwd: tmpDir,
         destination: join(fixtures, 'package-dest', 'spm_modules'),
         save: true,
         downloadlist: {}

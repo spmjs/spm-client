@@ -61,6 +61,7 @@ Login spmjs.io, arguments below
 Install a package, arguments below
 
 * name: the package name, can also be name@version
+* cwd: the dependencies of the package in the cwd will be installed, use it when name isn't specified
 * destination: the directory that install to
 * force: force download packages from registry, no cache
 * save: save name to package.dependencies
