@@ -41,6 +41,22 @@ describe('/lib/install.js', function() {
       args[2].should.be.true;
     });
 
+    it('should install package support array', function* () {
+      yield* install({
+        name: ['a@1.0.0'],
+        save: true
+      });
+      m.callCount.should.eql(1);
+      var args = m.callCache[0].arguments;
+      args[0].should.eql('a@1.0.0');
+      args[1].base.should.eql(process.cwd());
+      args[1].destination.should.eql(join(process.cwd(), 'spm_modules'));
+      //args[1].cache.should.eql('~/.spm/cache');
+      args[1].save.should.be.true;
+      args[1].downloadlist.should.eql({});
+      args[2].should.be.true;
+    });
+
     it('should install dependencies', function* () {
       yield* install({
         base: join(fixtures, 'install-package'),
