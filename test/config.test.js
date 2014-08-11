@@ -1,18 +1,21 @@
 'use strict';
 
 require('should');
+var join = require('path').join;
+var spmrc = require('spmrc');
+spmrc.spmrcfile = join(__dirname, 'fixtures', 'spmrc');
 var config = require('../lib/config');
 
 describe('/lib/config.js', function() {
 
   afterEach(config.reset);
 
-  it('should get default', function() {
+  it('should get default from spmrc', function() {
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
-    (ret.registry === undefined).should.be.true;
-    (ret.proxy === undefined).should.be.true;
-    (ret.auth === undefined).should.be.true;
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp', 'cache']);
+    ret.registry.should.equal('http://default.registry.com');
+    ret.auth.should.equal('defaultauth');
+    ret.proxy.should.equal('defaultproxy');
   });
 
   it('should overwrite key', function() {
@@ -22,16 +25,16 @@ describe('/lib/config.js', function() {
       proxy: null
     });
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp', 'cache']);
     ret.registry.should.equal('http://spmjs.io');
     ret.auth.should.equal('');
-    (ret.proxy === undefined).should.be.true;
+    ret.proxy.should.equal('defaultproxy');
   });
 
   it('should not write unmatched key', function() {
     config({a: 1});
     var ret = config();
-    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp']);
+    Object.keys(ret).should.eql(['registry', 'global_registry', 'proxy', 'auth', 'temp', 'cache']);
   });
 
   it('should reset defaults', function() {
@@ -43,8 +46,8 @@ describe('/lib/config.js', function() {
 
     config.reset();
     ret = config();
-    (ret.registry === undefined).should.be.true;
-    (ret.proxy === undefined).should.be.true;
-    (ret.auth === undefined).should.be.true;
+    ret.registry.should.equal('http://default.registry.com');
+    ret.auth.should.equal('defaultauth');
+    ret.proxy.should.equal('defaultproxy');
   });
 });

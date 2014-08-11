@@ -14,13 +14,13 @@
     "gulp": "~3.8.7",
     "gulp-gunzip": "~0.0.2",
     "gulp-untar2": "~0.0.5",
-    "inherits": "~2.0.1",
+    "inherits": "~1.0.0",
     "mkdirp": "~0.5.0",
     "multipipe": "~0.1.1",
     "request": "~2.40.0",
     "semver": "~3.0.1",
     "spm-log": "~0.1.0",
-    "spmrc": "~1.1.0",
+    "spmrc": "~1.2.0",
     "tar": "~1.0.0"
   },
   "devDependencies": {
