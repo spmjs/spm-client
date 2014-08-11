@@ -2,7 +2,7 @@
 
 require('should');
 var join = require('path').join;
-var mock = require('./support/mock').require('co-request');
+var mockRequest= require('spy').require('co-request');
 var unpublish = require('../lib/unpublish');
 
 var fixtures = join(__dirname, 'fixtures');
@@ -13,11 +13,11 @@ var config = {
 
 describe('/lib/unpublish.js', function() {
 
-  afterEach(mock.restore.bind(mock));
+  afterEach(mockRequest.reset.bind(mockRequest));
 
   it('should unpublish name', function* () {
     var obj = require(join(fixtures, 'unpublish.json'));
-    mock.intercept(function* () {
+    mockRequest.mock(function* () {
       /* jshint noyield: true */
       return {
         headers: {},
@@ -28,8 +28,8 @@ describe('/lib/unpublish.js', function() {
     var res = yield* unpublish({
       name: 'tmp'
     }, config);
-    mock.callCount.should.eql(1);
-    var args = mock.callCache[0].arguments[0];
+    mockRequest.callCount.should.eql(1);
+    var args = mockRequest.calls[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/tmp/');
     args.method.should.eql('DELETE');
     args.headers['Authorization'].should.eql('Yuan 12345');
@@ -38,7 +38,7 @@ describe('/lib/unpublish.js', function() {
 
   it('should unpublish name@version', function* () {
     var obj = require(join(fixtures, 'unpublish.json'));
-    mock.intercept(function* () {
+    mockRequest.mock(function* () {
       /* jshint noyield: true */
       return {
         headers: {},
@@ -50,8 +50,8 @@ describe('/lib/unpublish.js', function() {
       name: 'tmp',
       version: '1.0.0'
     }, config);
-    mock.callCount.should.eql(1);
-    var args = mock.callCache[0].arguments[0];
+    mockRequest.callCount.should.eql(1);
+    var args = mockRequest.calls[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/tmp/1.0.0/');
     args.method.should.eql('DELETE');
     args.headers['Authorization'].should.eql('Yuan 12345');

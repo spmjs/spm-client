@@ -24,6 +24,7 @@
     "tar": "~1.0.0"
   },
   "devDependencies": {
+    "spy": "~0.1.0",
     "co-mocha": "0",
     "coveralls": "2",
     "istanbul-harmony": "0",
