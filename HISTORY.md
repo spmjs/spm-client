@@ -2,6 +2,11 @@
 
 ---
 
+## 0.2.2
+
+- log tarfile size
+- args priority (args > config > global config)
+
 ## 0.2.1
 
 - name support array (install)
