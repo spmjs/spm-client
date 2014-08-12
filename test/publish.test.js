@@ -2,7 +2,8 @@
 
 var should = require('should');
 var join = require('path').join;
-var mockRequest = require('./support/mock').require('co-request');
+var mockRequest = require('spy').require('co-request');
+//console.log(require.cache)
 var publish = require('../lib/publish');
 
 var fixtures = join(__dirname, 'fixtures');
@@ -13,11 +14,11 @@ var config = {
 
 describe('/lib/publish.js', function() {
 
-  afterEach(mockRequest.restore.bind(mockRequest));
+  afterEach(mockRequest.reset.bind(mockRequest));
 
   it('should publish name', function* () {
     var obj = require(join(fixtures, 'publish.json'));
-    mockRequest.intercept(function* () {
+    mockRequest.mock(function* () {
       /* jshint noyield: true */
       return {
         headers: {},
@@ -29,7 +30,7 @@ describe('/lib/publish.js', function() {
       cwd: join(fixtures, 'publish')
     }, config);
     mockRequest.callCount.should.eql(2);
-    var args1 = mockRequest.callCache[0].arguments[0];
+    var args1 = mockRequest.calls[0].arguments[0];
     args1.url.should.eql('http://spmjs.io/repository/tmp/1.0.0/');
     args1.method.should.eql('POST');
     (args1.force === undefined).should.be.true;
@@ -47,7 +48,7 @@ describe('/lib/publish.js', function() {
       dependencies: ['position@1.1.0']
     });
 
-    var args2 = mockRequest.callCache[1].arguments[0];
+    var args2 = mockRequest.calls[1].arguments[0];
     args2.url.should.eql('http://spmjs.io/repository/tmp/1.0.0/');
     args2.method.should.eql('PUT');
     (args2.force === undefined).should.be.true;

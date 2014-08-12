@@ -10,22 +10,21 @@ var color = require('colorful');
 var rimraf = require('rimraf');
 var spmrc = require('spmrc');
 spmrc.spmrcfile = join(__dirname, 'fixtures', 'spmrc');
-var mock = require('./support/mock');
-var mockRequest = mock.require('request');
-var mockCoRequest = mock.require('co-request');
+var mockRequest = require('spy').require('request');
+var mockCoRequest = require('spy').require('co-request');
 var install = require('../lib/install');
 
 var fixtures = join(__dirname, 'fixtures');
 
 describe('/lib/install.js', function() {
 
-  var m = mock(install, 'installPackage');
-  afterEach(m.restore.bind(m));
-  after(m.destroy.bind(m));
+  var m = require('spy')(install, 'installPackage');
+  afterEach(m.reset.bind(m));
+  after(m.restore.bind(m));
 
   describe('install', function() {
 
-    beforeEach(m.intercept.bind(m, function* (){}));
+    beforeEach(m.mock.bind(m, function* (){}));
 
     it('should install package', function* () {
       yield* install({
@@ -33,7 +32,7 @@ describe('/lib/install.js', function() {
         save: true
       });
       m.callCount.should.eql(1);
-      var args = m.callCache[0].arguments;
+      var args = m.calls[0].arguments;
       args[0].should.eql('a');
       args[1].cwd.should.eql(process.cwd());
       args[1].destination.should.eql(join(process.cwd(), 'spm_modules'));
@@ -50,7 +49,7 @@ describe('/lib/install.js', function() {
         cwd: 'relative'
       });
       m.callCount.should.eql(1);
-      var args = m.callCache[0].arguments;
+      var args = m.calls[0].arguments;
       args[0].should.eql('a@1.0.0');
       args[1].cwd.should.eql(join(process.cwd(), 'relative'));
       args[1].destination.should.eql(join(process.cwd(), 'relative', 'spm_modules'));
@@ -67,10 +66,10 @@ describe('/lib/install.js', function() {
         saveDev: true
       });
       m.callCount.should.eql(2);
-      m.callCache[0].arguments[0].should.eql('b@1.0.0');
-      m.callCache[1].arguments[0].should.eql('c@1.0.0');
-      m.callCache[0].arguments[1].save.should.be.false;
-      m.callCache[0].arguments[1].saveDev.should.be.false;
+      m.calls[0].arguments[0].should.eql('b@1.0.0');
+      m.calls[1].arguments[0].should.eql('c@1.0.0');
+      m.calls[0].arguments[1].save.should.be.false;
+      m.calls[0].arguments[1].saveDev.should.be.false;
     });
 
     it('should not install package when no dependencies', function* () {
@@ -83,12 +82,12 @@ describe('/lib/install.js', function() {
 
   describe('installPackage', function() {
 
-    var logInfo = mock(log, 'info');
-    afterEach(logInfo.restore.bind(logInfo));
-    afterEach(mockCoRequest.restore.bind(mockCoRequest));
-    afterEach(mockRequest.restore.bind(mockRequest));
+    var logInfo = require('spy')(log, 'info');
+    afterEach(logInfo.reset.bind(logInfo));
+    afterEach(mockCoRequest.reset.bind(mockCoRequest));
+    afterEach(mockRequest.reset.bind(mockRequest));
     afterEach(removeTmp);
-    after(logInfo.destroy.bind(logInfo));
+    after(logInfo.restore.bind(logInfo));
 
     var tmpDir = join(fixtures, 'tmp');
     function removeTmp(done) {
@@ -109,7 +108,7 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, true);
       args.downloadlist.should.have.property('a@1.0.0');
       logInfo.callCount.should.eql(2);
-      logInfo.callCache[1].arguments.should.eql(['found', 'a@1.0.0']);
+      logInfo.calls[1].arguments.should.eql(['found', 'a@1.0.0']);
     });
 
     it('should install stable return when exist in dest', function* () {
@@ -119,7 +118,7 @@ describe('/lib/install.js', function() {
         cache: join(fixtures, 'cache'),
         downloadlist: {}
       };
-      mockCoRequest.intercept(function* () {
+      mockCoRequest.mock(function* () {
         /* jshint noyield: true */
         return {
           headers: {},
@@ -130,8 +129,8 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, false);
       args.downloadlist.should.have.property('tmp@0.0.2');
       logInfo.callCount.should.eql(2);
-      logInfo.callCache[0].arguments.should.eql(['install', color.magenta('tmp@stable')]);
-      logInfo.callCache[1].arguments.should.eql(['found', 'tmp@0.0.2']);
+      logInfo.calls[0].arguments.should.eql(['install', color.magenta('tmp@stable')]);
+      logInfo.calls[1].arguments.should.eql(['found', 'tmp@0.0.2']);
     });
 
     it('should install from cache', function* () {
@@ -142,7 +141,7 @@ describe('/lib/install.js', function() {
         cache: join(fixtures, 'cache'),
         downloadlist: {}
       };
-      mockCoRequest.intercept(function* () {
+      mockCoRequest.mock(function* () {
         /* jshint noyield: true */
         return {
           headers: {},
@@ -153,7 +152,7 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, false);
 
       logInfo.callCount.should.eql(3);
-      var firstArgs = logInfo.callCache.map(getFistArgs);
+      var firstArgs = logInfo.calls.map(getFistArgs);
       firstArgs.should.eql(['install', 'extract', 'installed']);
       var pkg = require(join(dest, 'tmp', '0.0.2', 'package.json'));
       pkg.name.should.eql('popomore-tmp');
@@ -173,10 +172,10 @@ describe('/lib/install.js', function() {
         downloadlist: {},
         registry: 'http://spmjs.io'
       };
-      mockRequest.intercept(function() {
+      mockRequest.mock(function() {
         return fs.createReadStream(join(cacheSrc, 'tmp-0.0.2.tar.gz'));
       });
-      mockCoRequest.intercept(function* () {
+      mockCoRequest.mock(function* () {
         var pkg = require(join(fixtures, 'more-packages.json'));
         pkg.packages['0.0.2'].md5 = '12345';
         /* jshint noyield: true */
@@ -187,7 +186,7 @@ describe('/lib/install.js', function() {
         };
       });
       yield* install.installPackage(args.name, args, false);
-      var firstArgs = logInfo.callCache.map(getFistArgs);
+      var firstArgs = logInfo.calls.map(getFistArgs);
       firstArgs.should.eql(['install', 'download', 'extract', 'installed']);
       fs.existsSync(join(cache, 'tmp-0.0.2.tar.gz')).should.be.true;
       var pkg = require(join(dest, 'tmp', '0.0.2', 'package.json'));
@@ -206,10 +205,10 @@ describe('/lib/install.js', function() {
         registry: 'http://spmjs.io',
         force: true
       };
-      mockRequest.intercept(function() {
+      mockRequest.mock(function() {
         return fs.createReadStream(join(fixtures, 'cache', 'tmp-0.0.2.tar.gz'));
       });
-      mockCoRequest.intercept(function* () {
+      mockCoRequest.mock(function* () {
         /* jshint noyield: true */
         return {
           headers: {},
@@ -218,7 +217,7 @@ describe('/lib/install.js', function() {
         };
       });
       yield* install.installPackage(args.name, args, false);
-      var firstArgs = logInfo.callCache.map(getFistArgs);
+      var firstArgs = logInfo.calls.map(getFistArgs);
       firstArgs.should.eql(['install', 'download', 'extract', 'installed']);
       fs.existsSync(join(cache, 'tmp-0.0.2.tar.gz')).should.be.true;
       var pkg = require(join(dest, 'tmp', '0.0.2', 'package.json'));
@@ -237,10 +236,10 @@ describe('/lib/install.js', function() {
         registry: 'http://spmjs.io',
         force: true
       };
-      mockRequest.intercept(function() {
+      mockRequest.mock(function() {
         return fs.createReadStream(join(fixtures, 'cache', 'tmp-0.0.2.tar.gz'));
       });
-      mockCoRequest.intercept(function* (args) {
+      mockCoRequest.mock(function* (args) {
         var filename = 'package-deps-' + args.url.split('/').slice(-3, -1).join('-') + '.json';
         return {
           headers: {},
@@ -266,7 +265,7 @@ describe('/lib/install.js', function() {
         save: true,
         downloadlist: {}
       };
-      mockCoRequest.intercept(function* () {
+      mockCoRequest.mock(function* () {
         /* jshint noyield: true */
         return {
           headers: {},

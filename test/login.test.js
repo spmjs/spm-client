@@ -2,7 +2,7 @@
 
 require('should');
 var join = require('path').join;
-var mock = require('./support/mock').require('co-request');
+var mockRequest = require('spy').require('co-request');
 var login = require('../lib/login');
 
 var fixtures = join(__dirname, 'fixtures');
@@ -12,11 +12,11 @@ var config = {
 
 describe('/lib/login.js', function() {
 
-  afterEach(mock.restore.bind(mock));
+  afterEach(mockRequest.reset.bind(mockRequest));
 
   it('should login', function* () {
     var obj = require(join(fixtures, 'login.json'));
-    mock.intercept(function* () {
+    mockRequest.mock(function* () {
       /* jshint noyield: true */
       return {
         headers: {},
@@ -28,8 +28,8 @@ describe('/lib/login.js', function() {
       username: 'arale',
       authkey: '12345'
     }, config);
-    mock.callCount.should.eql(1);
-    var args = mock.callCache[0].arguments[0];
+    mockRequest.callCount.should.eql(1);
+    var args = mockRequest.calls[0].arguments[0];
     args.url.should.eql('http://spmjs.io/account/login/');
     args.method.should.eql('POST');
     args.json.should.eql({
