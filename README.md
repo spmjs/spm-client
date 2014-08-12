@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/spm-client.svg?style=flat)](https://npmjs.org/package/spm-client)
 [![Build Status](https://img.shields.io/travis/spmjs/spm-client.svg?style=flat)](https://travis-ci.org/spmjs/spm-client)
-[![Build Status](https://img.shields.io/coveralls/spmjs/spm-client.svg?style=flat)](https://coveralls.io/r/spmjs/spm-client)
+[![Coverage Status](https://img.shields.io/coveralls/spmjs/spm-client.svg?style=flat)](https://coveralls.io/r/spmjs/spm-client)
 [![NPM downloads](http://img.shields.io/npm/dm/spm-client.svg?style=flat)](https://npmjs.org/package/spm-client)
 
 spm client api
