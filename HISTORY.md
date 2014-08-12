@@ -2,6 +2,13 @@
 
 ---
 
+## 0.2.3
+
+- client.config read spmrc by default
+- fix tar pack using inherits@1.0.0
+- add more default ignore files when tar
+- use spy for testcase
+
 ## 0.2.2
 
 - log tarfile size
