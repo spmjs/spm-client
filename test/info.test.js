@@ -170,7 +170,7 @@ describe('/lib/info.js', function() {
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('Server error');
+    err.message.should.startWith('Server error');
   });
 
   it('should throw when statusCode>=401', function* () {
@@ -190,6 +190,6 @@ describe('/lib/info.js', function() {
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('Authorization required.');
+    err.message.should.startWith('Authorization required.');
   });
 });
