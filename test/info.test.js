@@ -32,11 +32,11 @@ describe('/lib/info.js', function() {
     var args = mockRequest.calls[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/arale-cookie/');
     args.should.have.property('json');
-    res.should.eql(obj.packages['1.1.0']);
+    res.should.eql(obj);
   });
 
   it('should not packages info by name', function* () {
-    var obj = require(join(fixtures, 'package-with-name.json'));
+    var obj = require(join(fixtures, 'no-packages.json'));
     mockRequest.mock(function* () {
       /* jshint noyield: true */
       return {
@@ -46,13 +46,13 @@ describe('/lib/info.js', function() {
       };
     });
     var res = yield* info({
-      name: 'arale-cookie'
+      name: 'tmp'
     }, config);
     mockRequest.callCount.should.eql(1);
     var args = mockRequest.calls[0].arguments[0];
-    args.url.should.eql('http://spmjs.io/repository/arale-cookie/');
+    args.url.should.eql('http://spmjs.io/repository/tmp/');
     args.should.have.property('json');
-    res.should.eql(obj.packages['1.1.0']);
+    res.should.eql(obj);
   });
 
   it('should get info by name@version', function* () {
@@ -129,7 +129,8 @@ describe('/lib/info.js', function() {
       };
     });
     var res = yield* info({
-      name: 'tmp'
+      name: 'tmp',
+      tag: 'stable'
     }, config);
     mockRequest.callCount.should.eql(1);
     var args = mockRequest.calls[0].arguments[0];
@@ -153,7 +154,7 @@ describe('/lib/info.js', function() {
     mockRequest.callCount.should.eql(1);
     var args = mockRequest.calls[0].arguments[0];
     args.url.should.eql('http://spmjs.io/repository/tmp/');
-    res.should.eql(obj.packages['0.0.2']);
+    res.should.eql(obj);
   });
 
   it('should throw when statusCode>=500', function* () {
