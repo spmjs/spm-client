@@ -2,6 +2,11 @@
 
 ---
 
+## 0.2.4
+
+- improve print log
+- print versions when spm info not specify version
+
 ## 0.2.3
 
 - client.config read spmrc by default
