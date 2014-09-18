@@ -2,8 +2,11 @@
 
 ---
 
-## 0.2.4
+## 0.2.5
 
+more info in install error
+
+## 0.2.4
 - improve print log
 - print versions when spm info not specify version
 
