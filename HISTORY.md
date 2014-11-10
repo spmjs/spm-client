@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.6
+
+use vinyl-fs instead of gulp
+
 ## 0.2.5
 
 more info in install error

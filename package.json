@@ -11,7 +11,7 @@
     "fstream": "~1.0.1",
     "fstream-ignore": "~1.0.1",
     "generator-supported": "~0.0.1",
-    "gulp": "~3.8.7",
+    "vinyl-fs": "~0.3.11",
     "gulp-gunzip": "~0.0.2",
     "gulp-untar2": "~0.0.5",
     "inherits": "~1.0.0",
