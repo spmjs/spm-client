@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.7
+
+fix missing gulp when no harmony
+
 ## 0.2.6
 
 use vinyl-fs instead of gulp
