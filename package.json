@@ -24,14 +24,15 @@
     "tar": "~1.0.0"
   },
   "devDependencies": {
-    "spy": "~0.1.0",
+    "ali.regenerator": "0",
     "co-mocha": "0",
     "coveralls": "2",
     "istanbul-harmony": "0",
+    "ls-archive": "~1.0.2",
     "mocha": "1",
-    "ali.regenerator": "0",
+    "rimraf": "2",
     "should": "4",
-    "rimraf": "2"
+    "spy": "~0.1.0"
   },
   "repository": {
     "type": "git",
