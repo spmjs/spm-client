@@ -42,6 +42,7 @@
   "author": "popomore <sakura9515@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prepublish": "make build",
     "test": "make test"
   }
 }

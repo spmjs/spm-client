@@ -8,9 +8,6 @@ build: clean
 	@mkdir -p build
 	@$(MAKE) $(BUILD)
 
-publish: build
-	@npm publish
-
 clean:
 	@rm -rf build
 
