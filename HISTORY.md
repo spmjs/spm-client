@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.8
+
+don't read .gitignore when have .spmignore
+
 ## 0.2.7
 
 fix missing gulp when no harmony
