@@ -1,6 +1,4 @@
 'use strict';
 
-module.exports = require('generator-supported') ?
-  require('./lib') :
-  /* istanbul ignore next */
-  require('./build');
+require('ali.gnode');
+module.exports = require('./lib');

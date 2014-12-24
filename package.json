@@ -4,6 +4,7 @@
   "description": "spm client api",
   "main": "index",
   "dependencies": {
+    "ali.gnode": "~0.1.1",
     "co-request": "~0.2.0",
     "colorful": "~2.1.0",
     "debug": "~1.0.4",
@@ -11,7 +12,6 @@
     "fstream": "~1.0.1",
     "fstream-ignore": "~1.0.1",
     "generator-supported": "~0.0.1",
-    "vinyl-fs": "~0.3.11",
     "gulp-gunzip": "~0.0.2",
     "gulp-untar2": "~0.0.5",
     "inherits": "~1.0.0",
@@ -21,10 +21,10 @@
     "semver": "~3.0.1",
     "spm-log": "~0.1.0",
     "spmrc": "~1.2.0",
-    "tar": "~1.0.0"
+    "tar": "~1.0.0",
+    "vinyl-fs": "~0.3.11"
   },
   "devDependencies": {
-    "ali.regenerator": "0",
     "co-mocha": "0",
     "coveralls": "2",
     "istanbul-harmony": "0",
@@ -42,7 +42,6 @@
   "author": "popomore <sakura9515@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublish": "make build",
     "test": "make test"
   }
 }
