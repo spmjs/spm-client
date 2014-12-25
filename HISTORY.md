@@ -2,6 +2,11 @@
 
 ---
 
+## 0.2.9
+
+- use gnode instead of regenerator
+- fix(install) do info first, Fix https://github.com/spmjs/spm/issues/1107
+
 ## 0.2.8
 
 don't read .gitignore when have .spmignore
