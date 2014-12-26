@@ -9,6 +9,7 @@
     "colorful": "~2.1.0",
     "debug": "~1.0.4",
     "extend": "~1.3.0",
+    "father": "0.10.6",
     "fstream": "~1.0.1",
     "fstream-ignore": "~1.0.1",
     "generator-supported": "~0.0.1",
