@@ -111,6 +111,18 @@ describe('/lib/install.js', function() {
       logInfo.calls[1].arguments.should.eql(['found', 'a@1.0.0']);
     });
 
+    it('should return when exist in dest with semver', function* () {
+      var args = {
+        name: 'b@~1.0.3',
+        destination: join(fixtures, 'package-dest', 'spm_modules'),
+        downloadlist: {}
+      };
+      yield* install.installPackage(args.name, args, true);
+      args.downloadlist.should.have.property('b@~1.0.3');
+      logInfo.callCount.should.eql(2);
+      logInfo.calls[1].arguments.should.eql(['found', 'b@~1.0.3']);
+    });
+
     it('should install stable return when exist in dest', function* () {
       var args = {
         name: 'tmp',
