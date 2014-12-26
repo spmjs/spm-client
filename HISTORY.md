@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.10
+
+fix(install) check semver match before info
+
 ## 0.2.9
 
 - use gnode instead of regenerator
