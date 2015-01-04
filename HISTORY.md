@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.11
+
+fix(install) getVersion error, Fix [#31](https://github.com/spmjs/spm-client/issues/31)
+
 ## 0.2.10
 
 fix(install) check semver match before info
