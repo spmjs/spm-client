@@ -82,12 +82,19 @@ describe('/lib/install.js', function() {
 
   describe('installPackage', function() {
 
-    var logInfo = require('spy')(log, 'info');
-    afterEach(logInfo.reset.bind(logInfo));
+    var logInfo;
+    before(function() {
+      logInfo = require('spy')(log, 'info');
+    });
     afterEach(mockCoRequest.reset.bind(mockCoRequest));
     afterEach(mockRequest.reset.bind(mockRequest));
     afterEach(removeTmp);
-    after(logInfo.restore.bind(logInfo));
+    afterEach(function(){
+      logInfo.reset();
+    });
+    after(function(){
+      logInfo.restore();
+    });
 
     var tmpDir = join(fixtures, 'tmp');
     function removeTmp(done) {
