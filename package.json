@@ -33,7 +33,8 @@
     "mocha": "1",
     "rimraf": "2",
     "should": "4",
-    "spy": "~0.1.0"
+    "spy": "~0.1.0",
+    "jshint": "*"
   },
   "repository": {
     "type": "git",
