@@ -299,6 +299,26 @@ describe('/lib/install.js', function() {
       });
       rimraf.sync(tmpDir);
     });
+
+    it('should save to package.json when found in spm_modules and version is supplied', function* () {
+      var tmpDir = join(fixtures, 'tmp2');
+      var pkgPath = join(tmpDir, 'package.json');
+      mkdirp.sync(tmpDir);
+      fs.writeFileSync(pkgPath, '{"name": "a", "version": "1.0.0"}');
+      var args = {
+        name: 'tmp@0.0.2',
+        cwd: tmpDir,
+        destination: join(fixtures, 'package-dest', 'spm_modules'),
+        save: true,
+        downloadlist: {}
+      };
+      yield* install.installPackage(args.name, args, true);
+      var pkg = require(pkgPath);
+      pkg.spm.dependencies.should.eql({
+        tmp: '0.0.2'
+      });
+      rimraf.sync(tmpDir);
+    });
   });
 });
 
