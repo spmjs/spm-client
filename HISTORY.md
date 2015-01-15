@@ -2,6 +2,13 @@
 
 ---
 
+## 0.3.0
+
+- feat(bin) simple bin for client
+- feat(install) log registry when install
+- fix(install) save don't work when pkg is found and version is supplied, Fix [spmjs/spm#1144](https://github.com/spmjs/spm/issues/1144)
+- deps: ali.gnode -> gnode
+
 ## 0.2.11
 
 fix(install) getVersion error, Fix [#31](https://github.com/spmjs/spm-client/issues/31)
