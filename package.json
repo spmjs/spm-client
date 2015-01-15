@@ -4,7 +4,7 @@
   "description": "spm client api",
   "main": "index",
   "dependencies": {
-    "ali.gnode": "~0.1.1",
+    "gnode": "~0.1.1",
     "co": "~4.1.0",
     "co-request": "~0.2.0",
     "colorful": "~2.1.0",
