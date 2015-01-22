@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.2
+
+- fix(bin) also miss ali.gnode, should be gnode
+
 ## 0.3.1
 
 - fix(bin) miss bin in package.json
