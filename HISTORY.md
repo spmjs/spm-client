@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.1
+
+- fix(bin) miss bin in package.json
+
 ## 0.3.0
 
 - feat(bin) simple bin for client

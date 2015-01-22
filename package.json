@@ -1,6 +1,6 @@
 {
   "name": "spm-client",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "spm client api",
   "main": "index",
   "dependencies": {
@@ -46,5 +46,8 @@
   "license": "MIT",
   "scripts": {
     "test": "make test"
+  },
+  "bin": {
+    "spm-client": "bin/client"
   }
 }
