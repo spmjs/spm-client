@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.4
+
+- fix(bin) only compile files in spm-client/bin and spm-client/lib
+
 ## 0.3.3
 
 - fix(bin) use 6to5 instead of gnode
