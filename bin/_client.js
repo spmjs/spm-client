@@ -41,7 +41,7 @@ co(function*() {
     } catch(e) {}
   }
   console.log();
-  console.info(colorful.green('Run spm-client %s success', subCommand));
+  console.info(colorful.green('Run `spm-client %s` success'), subCommand);
 }).then();
 
 function showHelp() {

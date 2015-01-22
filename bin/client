@@ -2,5 +2,5 @@
 
 'use strict';
 
-require('gnode');
+require('6to5/register');
 require('./_client.js');

@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.3
+
+- fix(bin) use 6to5 instead of gnode
+
 ## 0.3.2
 
 - fix(bin) also miss ali.gnode, should be gnode
