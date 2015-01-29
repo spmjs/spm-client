@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.5
+
+- fix(install) create package.json when install --save, [spmjs/spm#1183](https://github.com/spmjs/spm/issues/1183)
+
 ## 0.3.4
 
 - fix(bin) only compile files in spm-client/bin and spm-client/lib
