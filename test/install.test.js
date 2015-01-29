@@ -319,6 +319,33 @@ describe('/lib/install.js', function() {
       });
       rimraf.sync(tmpDir);
     });
+
+    it('should create one when there is no package.json via running install --save', function* () {
+      var tmpDir = join(fixtures, 'tmp');
+      var pkgPath = join(tmpDir, 'package.json');
+      mkdirp.sync(tmpDir);
+      var args = {
+        name: 'tmp',
+        cwd: tmpDir,
+        destination: join(fixtures, 'package-dest', 'spm_modules'),
+        save: true,
+        downloadlist: {}
+      };
+      mockCoRequest.mock(function* () {
+        /* jshint noyield: true */
+        return {
+          headers: {},
+          body: require(join(fixtures, 'more-packages.json')),
+          statusCode: 200
+        };
+      });
+      yield* install.installPackage(args.name, args, true);
+      var pkg = require(pkgPath);
+      pkg.spm.dependencies.should.eql({
+        tmp: '0.0.2'
+      });
+      rimraf.sync(tmpDir);
+    });
   });
 });
 
