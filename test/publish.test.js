@@ -104,7 +104,7 @@ describe('/lib/publish.js', function() {
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\.]*$/i');
+    err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\.]*$/');
 
     try {
       err = undefined;
@@ -114,6 +114,15 @@ describe('/lib/publish.js', function() {
       err = e;
     }
     err.message.should.eql('spm key is missing');
+
+    try {
+      err = undefined;
+      cwd = join(fixtures, 'publish-miss-main');
+      yield* publish({cwd: cwd});
+    } catch(e) {
+      err = e;
+    }
+    err.message.should.eql('main file is missing');
   });
 
   it('should throw when publish private package', function*() {
