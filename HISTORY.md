@@ -2,6 +2,11 @@
 
 ---
 
+## 0.3.6
+
+- feat(publish) check main file exist before publish
+- feat(publish) name must be in lowercase, [#35](https://github.com/spmjs/spm-client/issues/35)
+
 ## 0.3.5
 
 - fix(install) create package.json when install --save, [spmjs/spm#1183](https://github.com/spmjs/spm/issues/1183)
