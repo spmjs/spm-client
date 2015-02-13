@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.7
+
+- fix(info) sort with semver.lt, Fix [spmjs/spmjs.io#118](https://github.com/spmjs/spmjs.io/issues/118)
+
 ## 0.3.6
 
 - feat(publish) check main file exist before publish
