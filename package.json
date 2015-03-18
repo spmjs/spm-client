@@ -4,7 +4,7 @@
   "description": "spm client api",
   "main": "index",
   "dependencies": {
-    "6to5": "~2.13.5",
+    "babel-core": "~4.7.15",
     "co": "~4.1.0",
     "co-request": "~0.2.0",
     "colorful": "~2.1.0",

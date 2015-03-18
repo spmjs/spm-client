@@ -3,7 +3,7 @@
 'use strict';
 
 // only compile files in spm-client/bin and spm-client/lib
-require('6to5/register')({
+require('babel-core/register')({
   ignore: '',
   only: /spm-client\/(bin|lib)/
 });
