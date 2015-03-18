@@ -2,6 +2,11 @@
 
 ---
 
+## 0.4.0
+
+- deps: 6to5 -> babel-core
+- feat(info): support *
+
 ## 0.3.7
 
 - fix(info) sort with semver.lt, Fix [spmjs/spmjs.io#118](https://github.com/spmjs/spmjs.io/issues/118)
