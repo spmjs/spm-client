@@ -295,7 +295,7 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, true);
       var pkg = require(pkgPath);
       pkg.spm.dependencies.should.eql({
-        tmp: '0.0.2'
+        tmp: '~0.0.2'
       });
       rimraf.sync(tmpDir);
     });
@@ -315,7 +315,7 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, true);
       var pkg = require(pkgPath);
       pkg.spm.dependencies.should.eql({
-        tmp: '0.0.2'
+        tmp: '~0.0.2'
       });
       rimraf.sync(tmpDir);
     });
@@ -342,7 +342,7 @@ describe('/lib/install.js', function() {
       yield* install.installPackage(args.name, args, true);
       var pkg = require(pkgPath);
       pkg.spm.dependencies.should.eql({
-        tmp: '0.0.2'
+        tmp: '~0.0.2'
       });
       rimraf.sync(tmpDir);
     });
