@@ -5,6 +5,6 @@
 // only compile files in spm-client/bin and spm-client/lib
 require('babel-core/register')({
   ignore: '',
-  only: /spm-client\/(bin|lib)/
+  only: /spm-client[\/\\](bin|lib)/
 });
 require('./_client.js');
