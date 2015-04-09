@@ -2,6 +2,10 @@
 
 ---
 
+## 0.4.1
+
+- fix: path on Windows will not transform
+
 ## 0.4.0
 
 - deps: 6to5 -> babel-core
