@@ -4,8 +4,6 @@
   "description": "spm client api",
   "main": "index",
   "dependencies": {
-    "babel-core": "~4.7.15",
-    "co": "~4.1.0",
     "co-request": "~0.2.0",
     "colorful": "~2.1.0",
     "debug": "~2.1.1",
@@ -16,7 +14,6 @@
     "gulp-gunzip": "~0.0.2",
     "gulp-untar2": "~0.0.5",
     "inherits": "~1.0.0",
-    "minimist": "~1.1.0",
     "mkdirp": "~0.5.0",
     "multipipe": "~0.1.2",
     "request": "~2.51.0",
@@ -27,6 +24,7 @@
     "vinyl-fs": "~0.3.13"
   },
   "devDependencies": {
+    "autod": "~2.0.1",
     "co-mocha": "0",
     "coveralls": "2",
     "istanbul-harmony": "0",
@@ -46,8 +44,5 @@
   "license": "MIT",
   "scripts": {
     "test": "make test"
-  },
-  "bin": {
-    "spm-client": "bin/client"
   }
 }
