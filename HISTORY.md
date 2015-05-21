@@ -2,6 +2,10 @@
 
 ---
 
+## 1.0.0
+
+- feat(bin): remove bin created from 0.3.0
+
 ## 0.4.1
 
 - fix: path on Windows will not transform
