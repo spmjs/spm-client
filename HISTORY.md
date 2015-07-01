@@ -2,6 +2,10 @@
 
 ---
 
+## 0.4.2
+
+- feat(install): _ is allowed in pkg name
+
 ## 0.4.1
 
 - fix: path on Windows will not transform
