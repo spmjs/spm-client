@@ -104,7 +104,7 @@ describe('/lib/publish.js', function() {
     } catch(e) {
       err = e;
     }
-    err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\.]*$/');
+    err.message.should.eql('name is invalid, should match /^[a-z][a-z0-9\\-\\._]*$/');
 
     try {
       err = undefined;
