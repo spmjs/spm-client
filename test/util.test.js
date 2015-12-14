@@ -17,4 +17,11 @@ describe('/lib/util.js', function() {
     (util.resolveid('@1.0.0') === null).should.be.true;
     (util.resolveid('_@1.0.0') === null).should.be.true;
   });
+
+  it('should resolve id contains underscore', function* () {
+    util.resolveid('lodash._getnative@1.0').should.eql({
+      name: 'lodash._getnative',
+      version: '1.0'
+    });
+  });
 });
