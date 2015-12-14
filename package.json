@@ -1,6 +1,6 @@
 {
   "name": "spm-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "spm client api",
   "main": "index",
   "dependencies": {

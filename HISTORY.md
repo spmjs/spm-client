@@ -2,6 +2,10 @@
 
 ---
 
+## 1.0.1
+
+- feat(util): support underscore [pr#40](https://github.com/spmjs/spm-client/pull/40)
+
 ## 1.0.0
 
 - feat(bin): remove bin created from 0.3.0
