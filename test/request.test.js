@@ -37,19 +37,6 @@ describe('/lib/request.js', function() {
       Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language', 'Authorization']);
       Object.keys(args).should.eql(['url', 'method', 'headers', 'gzip']);
     });
-
-    it('should has header `X-Yuan-Force`', function* () {
-      yield* request({
-        url: 'http://spmjs.io/repository/arale-cookie/',
-        method: 'GET',
-        force: true
-      });
-      mockRequest.callCount.should.eql(1);
-      var args = mockRequest.calls[0].arguments[0];
-      args.headers['X-Yuan-Force'].should.eql('true');
-      Object.keys(args.headers).should.eql(['user-agent', 'Accept-Language', 'X-Yuan-Force']);
-      Object.keys(args).should.eql(['url', 'method', 'force', 'headers', 'gzip']);
-    });
   });
 
   it('should throw when request ECONNREFUSED', function* () {
